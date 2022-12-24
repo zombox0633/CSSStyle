@@ -1,0 +1,167 @@
+:root {
+  --home-bg-color: #f2f3ee;
+  --menu-bg-color: #cbcbc2;
+  --silde-btn-border: #808080;
+  --slide-btn-bg: #ddf2db;
+  --slide-btn-hoverbg: #f1fff1;
+  --alpha-green: rgba(33, 96, 47, 0.51);
+  --icon-hover-color: #344a39;
+  --icon-hover-bg: #709680;
+  --text-color: #616161;
+  --border-color: #709680;
+  --heading-color: #344a39;
+  --box-shadow-color: #b5b5ac;
+  --lightest-green: #86a58d;
+  --light-green: #9ab09a;
+  --dark-green: rgba(52, 74, 57, 0.86);
+  --box-shadow: 0px 0px 3px 5px var(--box-shadow-color);
+  --border-radius: 60px 5px;
+  --fade-green: rgba(57, 87, 64, 0.55);
+}
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+div{
+  display: block;
+}
+body{
+  overflow: hidden;
+  /* width: 100%; */
+  font-size: 10px;
+  font-weight: normal;
+  background-color: white;
+  color: var(--text-color);
+}
+
+#ham-menu{
+  display: none; /* hidden button*/
+}
+label[for='ham-menu']{
+  display: block;
+  position: absolute; /* ต้นฉบับเป็น flex */
+  top: 24px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--silde-btn-border);
+  border-radius: 15px;
+  background-color: white;
+  z-index: 999;
+}
+
+[for="ham-menu"] > div{ /* หรือจะให้ .hide-des เหมือนกันทำเพื่อ? */
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.menu-line{
+  display: block;
+  width: 1rem;
+  height: 2px;
+  margin: 10px 0 5px; /* t l-r b*/
+  background-color: var(--silde-btn-border);
+  /* border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px; */
+  transform-origin: right center;
+  transition: 500ms; /* ระยะเวลาในการเปลี่ยน หรือแสดงผล*/
+}
+
+.full-page{
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #808080; */
+  opacity: 0;
+  z-index: 997;
+  transition-duration: 500ms; /*duration การแสดงผล*/
+}
+
+.h-menu{
+  visibility: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 60rem;
+  top: 0;
+  right: -50%;
+  background-color: rgb(177, 177, 177);
+  z-index: 998;
+  transform: translate(110%); /* -x% การเคลื่อนที่ไปด้านซ้าย x% การเคลื่อนที่ไปด้านขวา */
+  transition: 1s; /*animetion time*/
+}
+.menu{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  height: 50%;
+  padding: 20px;
+}
+.menu > p{
+  font-size: 5rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+}
+
+#ham-menu:checked + label{ /*เปลี่ยนสี่กรอบ button กับ ด้านใน button*/
+  background-color: transparent;
+  border-color: white;
+}
+#ham-menu:checked ~ .h-menu{ /* เมื่อกดจะทำให้ page กลับมาที่เดิม และแสดงผล*/
+  visibility: visible;
+  transform: translate(0);
+}
+
+#ham-menu:checked ~ .full-page{
+  visibility: visible;
+  opacity: 1;
+}
+
+#ham-menu:checked + label span{
+  background-color: white;
+}
+
+#ham-menu:checked + label span:nth-child(2),
+#ham-menu:checked + label span:nth-child(5){
+  transform: scale(0); /*ทำให้2,5ที่อยู่ row ที่2 หานไป*/
+}
+
+
+.hide-des > span:nth-child(4), /* row1(1,4),row1(2,5),row3(3,6)*/
+.hide-des > span:nth-child(5),
+.hide-des > span:nth-child(6){
+  /* border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px; */
+  transform-origin: left center; /*ทำให้เส้นที่ 4,5,6 ที่อยู่ฝั่งขวา(เคลื่อนที่ไปด้านซ้ายเข้าไปตรงกลาง)*/
+}
+
+#ham-menu:checked + label span:nth-child(1){
+  transform: translateY(17px) rotate(45deg); /* เมื่อกดทำการเปลี่ยนที่ในแนวแกนY และ หมุน 45deg*/
+}
+#ham-menu:checked + label span:nth-child(4){
+  transform: translateY(17px) rotate(-45deg);
+}
+#ham-menu:checked + label span:nth-child(3){
+  transform: translateY(-17px) rotate(-45deg);
+}
+#ham-menu:checked + label span:nth-child(6){
+  transform: translateY(-17px) rotate(45deg);
+}
+
+

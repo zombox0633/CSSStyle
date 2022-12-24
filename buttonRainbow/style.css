@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div{
+    display: block;
+}
+
+.buttons{
+    margin: 10%;
+    text-align: center;
+}
+.btn--hover{
+    width: 12.5rem;
+    height: 3rem;
+    margin: 1.25rem;
+    border: none;
+    border-radius: 2rem;
+    background-size: 300% 100%; /* เกี่ยวกับการเคลื่อนไหว animetion*/
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all .4s ease-out;
+}
+.btn--hover:hover{
+    background-position: 100% 0; /* เกี่ยวกับการเคลื่อนไหว animetion*/
+    transition: all 0.4s ease-out;
+}
+.btn--hover:focus{
+    outline: none;
+}
+.btn--hover.color--1 {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+.btn--hover.color--2 {
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+    box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+}
